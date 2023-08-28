@@ -1,0 +1,14 @@
+<div id="dynamic" style="left:314px;position:absolute;margin:50px auto;text-align:center;justify-content: center;">
+    <form id="lic_plt_form" action="{{ url_for('functions') }}" method="POST">
+        <input type="text" name="lic_plate" id="lic_plate" placeholder="Please Enter License Plate Number"style="width:75%">
+        <button id="lic_plt_submit" type="submit" name='submit_val'  value="from_ticket">Get Ticket</button>
+    </form>
+</div>
+
+
+
+
+<!-- <form id="lic_plt_form" action="{{ url_for('functions') }}" method="POST" style="margin-top: 40px;">
+    <input type="text" name="lic_plate" id="lic_plate" placeholder="Please Enter License Plate Number">
+    <button id="lic_plt_submit" type="submit" name='submit_val'  value="from_ticket">Get Ticket</button>
+</form> -->

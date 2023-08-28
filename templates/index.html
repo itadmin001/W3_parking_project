@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div id="header"><img src="/static/images/parque1-logo2.png" alt=""></div>
+
+        <div class="row spaces flex">
+            <div class="col flex">
+                <div class="counter_box flex">{{ spots }}</div>
+            </div>
+            <div class="col flex current_spaces">Spaces currently available</div>
+        </div>
+        <div class="row flex buttons">
+            <div class="col flex">
+                <button type="submit" id="park_btn">Park</button> 
+            </div>
+            <div class="col flex">
+                <button type="submit" id="exit_btn" value="1">Pay and Exit</button> 
+            </div>
+        </div>
+        <div class="row flex">
+            <div class="col flex"><button type="submit" id="help_btn">Call for Help</button></div>
+        </div>
+        <div id="dynamic_wrapper"><</div>
+
+    <div class="row flex">
+        <div class="col flex">
+            <div class="disclaim_wrapper">
+                <p class="disclaim">
+                    <span class="bold">NOTICE: </span>Please be sure to display your ticket on dashboard or safeguard. If you do not have a ticket upon
+                    exiting, you will be charged the maximum amount of $30
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="label_container">
+                <label class="pmt_label" for="time_in"> Time In: {{entry_time}}</label>
+                <label class="pmt_label"  for="time_out"> Time Out: {{now}}</label>
+                <label class="pmt_label"  for="price"> Amount Due: ${{cost}}</label>
+            </div>
+        
+            <form id="payment_form" method="POST" action="">
+                <input type="text" name="exit_pay" id="exit_pay" placeholder="Enter Payment Amount">
+                <button id="pymt_submit" type="submit" name="submit_val" value="pymt_submit" >Pay and Exit</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/static/js/park.js"></script>
+{% endblock %}

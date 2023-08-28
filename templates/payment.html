@@ -1,0 +1,34 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+
+{% endblock %}
+
+{% block body %}
+<div class="container m-auto">
+    <div id="header"><img src="/static/images/parque1-logo2.png" alt=""></div>
+    <div class="row flex">
+        <div class="col m-auto" style="margin-top: 100px">
+            <div class="label_container">
+                <label class="pmt_label" id="entry_time" for="time_in"> <span class="bold">Time In:</span> {{entry_time}}</label>
+                <label class="pmt_label" id="exit_time"  for="time_out"> <span class="bold">Time Out:</span> {{now}}</label>
+                <label class="pmt_label" id="cost"  for="price"> <span class="bold">Amount Due:</span> ${{cost}}</label>
+            </div>
+
+            <div id="loading" style="display:none;"><img src="/static/images/output-onlinegiftools.gif" alt="" /></div>
+                    
+            <form id="payment_form" method="POST" action="{{url_for('process')}}">
+                <input type="hidden" value={{license_plate}} name="lic_plate">
+                <input type="hidden" value={{now}} name="exit_time">
+                <input type="hidden" value={{cost}} name="cost">
+                <input type="text" name="exit_pay" id="exit_pay" placeholder="Enter Payment Amount">
+                <button id="pymt_submit" type="submit" name="submit_val" value="pymt_submit" >Pay and Exit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
